@@ -8,7 +8,6 @@ import com.suning.zookeeper.client.ZKClusterClient;
  * 连接重建的监听器，在连接重建时，需要对节点的监听重新注册<br> 
  * 〈功能详细描述〉
  *
- * @author 15050977 xy
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
  */

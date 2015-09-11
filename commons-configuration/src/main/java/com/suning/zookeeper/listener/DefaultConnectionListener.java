@@ -15,7 +15,6 @@ import com.suning.zookeeper.factory.ZookeeperClientMakerFactory;
  * 屏蔽上层业务对于底层细节的理解，包装对连接监听的处理<br>
  * 〈功能详细描述〉
  *
- * @author 15050977 xy
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
  */

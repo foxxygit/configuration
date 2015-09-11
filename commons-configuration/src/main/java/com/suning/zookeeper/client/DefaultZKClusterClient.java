@@ -28,7 +28,6 @@ import com.suning.zookeeper.util.ZkPathUtils;
  * 默认zk集群的操作client<br>
  * 〈功能详细描述〉
  *
- * @author 15050977 xy
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
  */
@@ -55,7 +54,8 @@ public class DefaultZKClusterClient implements ZKClusterClient {
      * @see com.suning.zookeeper.client.ZKClusterClient#createNode(java.lang.String, java.lang.String,
      * com.suning.zookeeper.CreateMode)
      */
-    public void createNode(String path, String value, CreateMode mode) {
+    @Override
+	public void createNode(String path, String value, CreateMode mode) {
         Preconditions.checkNotNull(path, "path can't be null");
         Preconditions.checkNotNull(value, "value can't be null");
         checkConnection();
@@ -72,7 +72,8 @@ public class DefaultZKClusterClient implements ZKClusterClient {
      * (non-Javadoc)
      * @see com.suning.zookeeper.client.ZKClusterClient#getNodeValue(java.lang.String)
      */
-    public String getNodeValue(String path) {
+    @Override
+	public String getNodeValue(String path) {
         Preconditions.checkNotNull(path, "path can't be null");
         checkConnection();
         try {
@@ -88,7 +89,8 @@ public class DefaultZKClusterClient implements ZKClusterClient {
      * (non-Javadoc)
      * @see com.suning.zookeeper.client.ZKClusterClient#getChildNodes(java.lang.String)
      */
-    public List<Node> getChildNodes(String path) {
+    @Override
+	public List<Node> getChildNodes(String path) {
         Preconditions.checkNotNull(path, "path can't be null");
         checkConnection();
         try {
@@ -113,7 +115,8 @@ public class DefaultZKClusterClient implements ZKClusterClient {
      * (non-Javadoc)
      * @see com.suning.zookeeper.client.ZKClusterClient#deleteNode(java.lang.String)
      */
-    public void deleteNode(String path) {
+    @Override
+	public void deleteNode(String path) {
         Preconditions.checkNotNull(path, "path can't be null");
         checkConnection();
         try {
@@ -128,7 +131,8 @@ public class DefaultZKClusterClient implements ZKClusterClient {
      * (non-Javadoc)
      * @see com.suning.zookeeper.client.ZKClusterClient#setNodeValue(java.lang.String, java.lang.String)
      */
-    public void setNodeValue(String path, String value) {
+    @Override
+	public void setNodeValue(String path, String value) {
         Preconditions.checkNotNull(path, "path can't be null");
         Preconditions.checkNotNull(value, "value can't be null");
         checkConnection();
@@ -145,7 +149,8 @@ public class DefaultZKClusterClient implements ZKClusterClient {
      * @see com.suning.zookeeper.client.ZKClusterClient#registerNodeListener(java.lang.String,
      * com.suning.zookeeper.listener.ZkNodeListener)
      */
-    public void registerNodeListener(String path, ZkNodeListener listener) {
+    @Override
+	public void registerNodeListener(String path, ZkNodeListener listener) {
         Preconditions.checkNotNull(path, "path can't be null");
         Preconditions.checkNotNull(listener, "listener can't be null");
         checkConnection();
@@ -164,28 +169,32 @@ public class DefaultZKClusterClient implements ZKClusterClient {
     /* (non-Javadoc)
      * @see com.suning.zookeeper.client.ZKClusterClient#isConnected()
      */
-    public boolean isConnected() {
+    @Override
+	public boolean isConnected() {
         return isConnected;
     }
 
     /* (non-Javadoc)
      * @see com.suning.zookeeper.client.ZKClusterClient#setConnected(boolean)
      */
-    public void setConnected(boolean isConnected) {
+    @Override
+	public void setConnected(boolean isConnected) {
         this.isConnected = isConnected;
     }
 
     /* (non-Javadoc)
      * @see com.suning.zookeeper.client.ZKClusterClient#getCuratorFramework()
      */
-    public CuratorFramework getCuratorFramework() {
+    @Override
+	public CuratorFramework getCuratorFramework() {
         return client;
     }
 
     /* (non-Javadoc)
      * @see com.suning.zookeeper.client.ZKClusterClient#shutdown()
      */
-    public void shutdown() {
+    @Override
+	public void shutdown() {
         isConnected = false;
         if (null != client) {
             client.close();

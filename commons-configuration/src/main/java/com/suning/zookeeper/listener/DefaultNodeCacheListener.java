@@ -25,7 +25,6 @@ import com.suning.zookeeper.util.ZkPathUtils;
  * 对节点和子节点监听的处理器<br>
  * 〈功能详细描述〉
  *
- * @author 15050977 xy
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
  */
@@ -56,7 +55,8 @@ public class DefaultNodeCacheListener implements NodeCacheListener, PathChildren
         pathNode.getListenable().addListener(this);
     }
 
-    public void childEvent(CuratorFramework client, PathChildrenCacheEvent event) throws Exception {
+    @Override
+	public void childEvent(CuratorFramework client, PathChildrenCacheEvent event) throws Exception {
         byte[] data = event.getData().getData();
         String path = event.getData().getPath();
         ZkNodeData nodeData = new ZkNodeData(path, new String(data, charset), null);
@@ -104,7 +104,8 @@ public class DefaultNodeCacheListener implements NodeCacheListener, PathChildren
         }
     }
 
-    public void nodeChanged() throws Exception {
+    @Override
+	public void nodeChanged() throws Exception {
         byte[] data = nodeCache.getCurrentData().getData();
         String path = nodeCache.getCurrentData().getPath();
         Set<ZkNodeListener> zkNodeListeners = zkNodeListenerMap.get(path);

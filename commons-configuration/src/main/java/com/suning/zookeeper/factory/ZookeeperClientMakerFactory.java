@@ -47,7 +47,6 @@ import com.suning.zookeeper.exception.ZKConnectException;
  * zkclient制造梦工场〉<br> 
  * 〈功能详细描述〉
  *
- * @author 15050977 xy
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
  */
@@ -111,7 +110,8 @@ public class ZookeeperClientMakerFactory {
         final CountDownLatch downLactch = new CountDownLatch(1);
         curatorFramework.getConnectionStateListenable().addListener(new ConnectionStateListener() {
 
-            public void stateChanged(CuratorFramework client, ConnectionState newState) {
+            @Override
+			public void stateChanged(CuratorFramework client, ConnectionState newState) {
                 if (newState == ConnectionState.CONNECTED || newState == ConnectionState.RECONNECTED) {
                     downLactch.countDown();
                     log.info("with zk server connection is ok!!!!");
@@ -119,7 +119,8 @@ public class ZookeeperClientMakerFactory {
             }
         });
         curatorFramework.getUnhandledErrorListenable().addListener(new UnhandledErrorListener() {
-            public void unhandledError(String message, Throwable e) {
+            @Override
+			public void unhandledError(String message, Throwable e) {
                 log.info("CuratorFramework unhandledError: {}", message);
             }
         });

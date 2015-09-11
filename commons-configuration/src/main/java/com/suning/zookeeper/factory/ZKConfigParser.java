@@ -11,7 +11,6 @@ import org.w3c.dom.Element;
  * 解析zk-cluster.xml配置文件<br>
  * 〈功能详细描述〉
  *
- * @author 15050977 xy
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
  */
